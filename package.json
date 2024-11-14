@@ -1,0 +1,43 @@
+{
+  "name": "bootstry.js",
+  "version": "1.0.0",
+  "description": "A client side editor for editable content with attribute data-editable=\"block-id\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --mode=development --config=themes/tailwindcss/config/webpack.dev.js",
+    "watch": "webpack --watch --mode=production --stats-error-details --config=themes/tailwindcss/config/webpack.watch.js",
+    "build": "webpack --mode=production --stats-error-details --config=themes/tailwindcss/config/webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prestiggio/bootstry.js.git"
+  },
+  "keywords": [
+    "CMS",
+    "javascript",
+    "CKEditor",
+    "API",
+    "revision"
+  ],
+  "author": "Landr Rakotoarivelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prestiggio/bootstry.js/issues"
+  },
+  "homepage": "https://github.com/Prestiggio/bootstry.js#readme",
+  "devDependencies": {
+    "@babel/preset-react": "^7.25.9",
+    "babel-loader": "^9.2.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "dotenv-webpack": "^8.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-dev-webpack-plugin": "^31.1.13",
+    "@ckeditor/ckeditor5-theme-lark": "^43.3.1"
+  }
+}
