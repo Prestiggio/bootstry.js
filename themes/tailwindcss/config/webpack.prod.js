@@ -18,7 +18,10 @@ module.exports = merge(common, {
         }
     },
     output: {
-        publicPath: 'https://' + config.backend.host + '/themes/' + config.theme.path + '/' //mila antsoina ty open /Applications/Google\ Chrome.app --args --disable-web-security --user-data-dir
+        filename: 'medias/js/[name].js',
+        chunkFilename: 'medias/js/[name].js',
+        path: `/home/node/app/build/${config.theme.path}`,
+        library: '$Ry'
     },
     plugins: [
         new Dotenv({

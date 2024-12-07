@@ -1,0 +1,1 @@
+ docker run -it --rm -v .:/home/node/app -w /home/node/app -p 8044:8044 node:latest bash
