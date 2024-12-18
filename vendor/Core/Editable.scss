@@ -1,0 +1,12 @@
+.position-absolute.edit-btn {
+    transition: background-color .6s;
+    background-color: #ffffffaa;
+    padding: 2px 6px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+
+    &:hover {
+        transition: background-color .6s;
+        background-color: #ffffff;
+    }
+}

@@ -1,3 +1,20 @@
+import React, {Suspense} from 'react';
+import ReactDOM from 'react-dom';
+import Ry from 'Core/Ry';
+import Layout from 'bootstrap/Layout';
+import 'bootstrap/Sample';
+import './Components';
+import 'porto/layouts';
+import 'facebook/Components';
+import 'katolika/Components';
+import 'commerce/Components';
+import 'Azoantoka/Components';
+import 'Core/Components';
+import Loading from './Components/Loading';
+import 'coreui-admin';
+import './layouts';
+import { isArray, isString } from 'lodash';
+
 let messe = {};
 
 function descend(name, value) {
@@ -59,3 +76,49 @@ if (phoneEl) {
         })
     })
 }
+
+const content = {
+    blocks: {}
+}
+
+document.querySelectorAll('[data-editable]').forEach((editableBlock)=>{
+    content.blocks[editableBlock.getAttribute('data-editable')] = editableBlock.innerHTML
+    console.log(content)
+})
+
+document.querySelectorAll('[data-html-editor]').forEach((htmlEditor)=>{
+    
+})
+
+$("script[type='application/ld+json']").each(function () {
+    let text = $(this).text()
+    let content = JSON.parse(text ? text : '{}');
+    if(!('blocks' in content))
+        content.blocks = {}
+    $('[data-editable]').each(function () {
+        if($(this).attr('id')) {
+            content.blocks[$(this).attr('id')] = $(this).html()
+        }
+    });
+    container.content = content
+    const Th = React.lazy(() => {
+        switch(content.color) {
+            case 'red':
+                return import('./colors/red')
+            case 'violet':
+                return import('./colors/violet')
+            case 'white':
+                return import('./colors/white')
+            default:
+            case 'green':
+                return import('./colors/green')
+        }
+    })
+    ReactDOM.render(
+        <Layout data={content}>
+            <Ry class={content.view} content={content}/>
+            {content.layout?null:<Suspense fallback={<Loading/>}>
+                <Th/>
+            </Suspense>}
+        </Layout>, $(this).parent()[0])
+});
